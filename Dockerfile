@@ -3,9 +3,9 @@ WORKDIR /app
 
 FROM base AS deps
 COPY package.json package-lock.json ./
-# REMOVED the custom registry line that was causing ENOTFOUND
+# Changed npm ci to npm install
 RUN --mount=type=cache,target=/root/.npm \
-    npm ci --prefer-offline --no-audit
+    npm install --prefer-offline --no-audit
 
 FROM deps AS build
 COPY . .
