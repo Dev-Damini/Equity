@@ -74,6 +74,7 @@
     "zod": "^4.3.5"
   },
   "devDependencies": {
+    "@hono/vite-dev-server": "^0.18.2",
     "@eslint/js": "^9.39.1",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",
@@ -95,4 +96,4 @@
     "vite": "^7.2.4",
     "vitest": "^4.0.16"
   }
-}
+  }
