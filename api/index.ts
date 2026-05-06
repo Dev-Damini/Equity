@@ -10,15 +10,15 @@ import path from "node:path";
 
 const app = new Hono();
 
-// 1. CORS Configuration (CRITICAL FOR DOMAIN CONNECTION)
+// 1. CORS Configuration
 app.use(
   "/api/*",
   cors({
     origin: [
       "http://localhost:5173", 
       "https://equity-76cl.onrender.com",
-      "https://equityspringgroup.com",      // REPLACE WITH YOUR ACTUAL DOMAIN
-      "https://www.equityspringgroup.com"  // INCLUDE THE WWW VERSION
+      "https://equityspringgroup.com",
+      "https://www.equityspringgroup.com"
     ],
     allowMethods: ["GET", "POST", "OPTIONS"],
     allowHeaders: ["Content-Type", "Authorization"],
@@ -39,15 +39,20 @@ app.all("/api/trpc/*", async (c) => {
 // 3. Serve Frontend Static Assets
 const clientDistPath = path.resolve("dist/client");
 
+// Serve JS/CSS from the assets folder
 app.use("/assets/*", serveStatic({ root: "./dist/client" }));
-app.use("/vite.svg", serveStatic({ path: "./dist/client/vite.svg" }));
-app.use("/favicon.ico", serveStatic({ path: "./dist/client/favicon.ico" }));
+
+// Catch-all for root static files (logo.png, vite.svg, robots.txt, etc.)
+// This ensures any file in your 'public' folder is accessible
+app.use("/*", serveStatic({ root: "./dist/client" }));
 
 // 4. SPA Fallback
+// This only runs if the above static middleware doesn't find a file
 app.get("/*", async (c) => {
   const url = new URL(c.req.url);
   
-  if (url.pathname.startsWith("/api") || url.pathname.includes(".")) {
+  // Prevent API calls or missing files (with extensions) from returning index.html
+  if (url.pathname.startsWith("/api") || (url.pathname.includes(".") && !url.pathname.endsWith(".html"))) {
     return c.json({ error: "Not Found" }, 404);
   }
 
