@@ -4,11 +4,11 @@ import {
   CheckCircle2,
   Clock,
   Mail,
-  Phone,
   Shield,
   Award,
   TrendingUp,
   Zap,
+  Send,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -138,14 +138,14 @@ The EquitySpring Group Team`,
 
             <div className="bg-gray-50 rounded-lg p-5 text-left flex items-start gap-3">
               <div className="w-10 h-10 bg-[#c9a84c]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                <Phone className="w-5 h-5 text-[#c9a84c]" />
+                <Send className="w-5 h-5 text-[#c9a84c]" />
               </div>
               <div>
                 <h4 className="font-semibold text-gray-900 text-sm">
-                  Phone Contact Coming
+                  Confirmation Approval Mail
                 </h4>
                 <p className="text-gray-500 text-xs mt-1">
-                  Expect a call from our team within 24-48 hours
+                  You will receive a confirmation approval mail on the email address you provided
                 </p>
               </div>
             </div>

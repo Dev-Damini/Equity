@@ -13,7 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { trpc } from "@/providers/trpc";
-import { Phone, CheckCircle2, ArrowRight, Mail, Shield } from "lucide-react";
+import { Mail, Phone, CheckCircle2, ArrowRight, Shield } from "lucide-react";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -92,20 +92,20 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="bg-[#0a0a0a] py-4 px-4 md:px-8">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-3">
           <div className="flex items-center gap-3">
             <img
               src="/logo.png"
               alt="EquitySpring Group"
-              className="h-10 w-10 object-contain"
+              className="h-10 w-10 object-contain flex-shrink-0"
             />
-            <span className="text-white font-bold text-lg tracking-wide">
+            <span className="text-white font-bold text-lg tracking-wide whitespace-nowrap">
               EquitySpring Group
             </span>
           </div>
-          <div className="flex items-center gap-2 text-white">
-            <Phone className="w-4 h-4 text-[#c9a84c]" />
-            <span className="text-sm md:text-base font-medium">
+          <div className="flex items-center gap-2 text-white/80 md:pl-6">
+            <Mail className="w-4 h-4 text-[#c9a84c] flex-shrink-0" />
+            <span className="text-sm font-medium truncate">
               support@equityspringgroup.com
             </span>
           </div>
@@ -147,20 +147,6 @@ export default function Home() {
       <section className="px-4 pb-16">
         <div className="max-w-xl mx-auto">
           <div className="bg-white rounded-lg shadow-[0_8px_30px_rgba(0,0,0,0.12)] overflow-hidden">
-            {/* Inner dark header */}
-            <div className="bg-[#0a0a0a] py-8 flex items-center justify-center">
-              <div className="text-center">
-                <img
-                  src="/logo.png"
-                  alt="EquitySpring Group"
-                  className="h-20 w-20 object-contain mx-auto"
-                />
-                <p className="text-white/70 text-xs mt-2 tracking-wider uppercase">
-                  EquitySpring Group
-                </p>
-              </div>
-            </div>
-
             {/* Form Fields */}
             <div className="p-6 md:p-8 space-y-5">
               {/* Funding Amount */}
